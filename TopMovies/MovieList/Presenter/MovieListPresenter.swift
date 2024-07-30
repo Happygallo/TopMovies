@@ -39,6 +39,7 @@ extension MovieListPresenter: MovieListPresenterInputProtocol {
     
     func movieTapped(index: Int) {
         guard let movie = interactorInput?.getMovie(id: movies[index].id) else {
+            showError()
             return
         }
         router?.navigateToDetail(movie: movie)
@@ -60,16 +61,14 @@ extension MovieListPresenter: MovieListPresenterInputProtocol {
 extension MovieListPresenter: MovieListInteractorOutputProtocol {
     func fetchedTopMovies(_ models: [MovieEntity]) {
         let viewModels = mapper.map(entities: models)
-        DispatchQueue.main.async {
-            self.movies.append(contentsOf: viewModels)
-            self.presenterOutput?.reloadData()
-            self.isFetchingMovies = false
-        }
+        movies.append(contentsOf: viewModels)
+        presenterOutput?.reloadData()
+        isFetchingMovies = false
     }
     
-    func fetchedError(_ message: String) {
-        DispatchQueue.main.async {
-            self.isFetchingMovies = false
+    func showError() {
+        router?.presentCustomAlert() { [weak self] in
+            self?.isFetchingMovies = false
         }
     }
     
@@ -80,7 +79,7 @@ extension MovieListPresenter: MovieListInteractorOutputProtocol {
     }
     
     private func updateMovieImage(_ image: UIImage, for url: URL) {
-        if let index = self.movies.firstIndex(where: { $0.coverImageURL == url }) {
+        if let index = movies.firstIndex(where: { $0.coverImageURL == url }) {
             var movie = self.movies[index]
             movie.coverImage = image
             self.movies[index] = movie

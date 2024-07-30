@@ -30,22 +30,25 @@ class MovieListInteractor {
 extension MovieListInteractor: MovieListInteractorInputProtocol {
     func fetchTopMovies() {
         apiDataManager.fetchTopMovies(page: page) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let topMovies):
-                self.page += 1
-                self.movies.append(contentsOf: topMovies.movies)
-                self.interactorOutput?.fetchedTopMovies(topMovies.movies)
-            case .failure(let error):
-                self.interactorOutput?.fetchedError(error.localizedDescription)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let topMovies):
+                    self?.page += 1
+                    self?.movies.append(contentsOf: topMovies.movies)
+                    self?.interactorOutput?.fetchedTopMovies(topMovies.movies)
+                case .failure(_):
+                    self?.interactorOutput?.showError()
+                }
             }
         }
     }
     
     func loadImage(url: URL) {
         imageLoaderService.loadImage(from: url) { [weak self] data in
-            if let data {
-                self?.interactorOutput?.didLoadImage(data, for: url)
+            DispatchQueue.main.async {
+                if let data {
+                    self?.interactorOutput?.didLoadImage(data, for: url)
+                }
             }
         }
     }

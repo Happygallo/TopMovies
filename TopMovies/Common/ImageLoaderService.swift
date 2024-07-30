@@ -23,10 +23,8 @@ class ImageLoaderService: ImageLoaderServiceProtocol {
             DispatchQueue.global(qos: .background).async {
                 self.fetchImageFromNetwork(from: url) { [weak self] data in
                     if let data {
-                        DispatchQueue.main.async {
-                            self?.imageCache.setObject(data as NSData, forKey: url as NSURL)
-                            completion(data)
-                        }
+                        self?.imageCache.setObject(data as NSData, forKey: url as NSURL)
+                        completion(data)
                     } else {
                         completion(nil)
                     }

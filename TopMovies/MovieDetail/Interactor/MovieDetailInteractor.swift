@@ -29,8 +29,10 @@ extension MovieDetailInteractor: MovieDetailInteractorInputProtocol {
     }
     
     func loadImages(urls: [URL]) {
-        imageLoaderService.loadImages(from: urls) { [weak self] loadedImages in
-            self?.interactorOutput?.didLoadImages(loadedImages)
+        imageLoaderService.loadImages(from: urls) { [weak self] images in
+            DispatchQueue.main.async {
+                self?.interactorOutput?.didLoadImages(images)
+            }
         }
     }
 }

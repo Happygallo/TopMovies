@@ -10,9 +10,7 @@ import UIKit
 class MovieViewModelMapper: MovieViewModelMapperProtocol {
     func map(entities: [MovieEntity]) -> [MovieListViewModel] {
         let movies: [MovieListViewModel] = entities.compactMap {
-            guard let coverImageURL = URL(string: "https://image.tmdb.org/t/p/w500" + $0.backdropPath),
-                  let posterImageURL = URL(string: "https://image.tmdb.org/t/p/w500" + $0.posterPath)
-            else {
+            guard let coverImageURL = URL(string: "https://image.tmdb.org/t/p/w500" + $0.backdropPath) else {
                 return nil
             }
             let ratingColor = getColorForRating($0.voteAverage)

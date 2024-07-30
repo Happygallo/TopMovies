@@ -34,6 +34,8 @@
 		A304E9932C589BD6005E2875 /* MovieDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9922C589BD6005E2875 /* MovieDetailRouterProtocol.swift */; };
 		A304E9962C589BEA005E2875 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9952C589BEA005E2875 /* MovieDetailRouter.swift */; };
 		A304E9982C58AD77005E2875 /* UIImage+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9972C58AD77005E2875 /* UIImage+Filters.swift */; };
+		A304E99A2C58B1CB005E2875 /* MoviesAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9992C58B1CB005E2875 /* MoviesAlertViewController.swift */; };
+		A304E99D2C58BB3F005E2875 /* MovieAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */; };
 		A37C63582C535122009A0C40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37C63572C535122009A0C40 /* AppDelegate.swift */; };
 		A37C63612C535123009A0C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37C63602C535123009A0C40 /* Assets.xcassets */; };
 		A37C63642C535123009A0C40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37C63622C535123009A0C40 /* LaunchScreen.storyboard */; };
@@ -100,6 +102,8 @@
 		A304E9922C589BD6005E2875 /* MovieDetailRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		A304E9952C589BEA005E2875 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
 		A304E9972C58AD77005E2875 /* UIImage+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Filters.swift"; sourceTree = "<group>"; };
+		A304E9992C58B1CB005E2875 /* MoviesAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAlertViewController.swift; sourceTree = "<group>"; };
+		A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAlertProtocol.swift; sourceTree = "<group>"; };
 		A37C63542C535122009A0C40 /* TopMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37C63572C535122009A0C40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A37C63602C535123009A0C40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -227,8 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				A304E9712C5881D2005E2875 /* ImageLoaderService.swift */,
+				A304E9992C58B1CB005E2875 /* MoviesAlertViewController.swift */,
 				A304E9882C589218005E2875 /* Entities */,
 				A304E9732C5881DF005E2875 /* Protocols */,
+				A37C63AA2C555FD9009A0C40 /* Components */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				A304E9742C5881ED005E2875 /* ImageLoaderServiceProtocol.swift */,
+				A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -309,7 +316,6 @@
 				A37C63B42C55B967009A0C40 /* MovieList */,
 				A37C63892C5355B9009A0C40 /* MovieDetail */,
 				A37C63AD2C556098009A0C40 /* Extensions */,
-				A37C63AA2C555FD9009A0C40 /* Components */,
 				A37C63572C535122009A0C40 /* AppDelegate.swift */,
 				A37C63602C535123009A0C40 /* Assets.xcassets */,
 				A37C63622C535123009A0C40 /* LaunchScreen.storyboard */,
@@ -576,10 +582,12 @@
 				A304E98D2C589BA1005E2875 /* MovieDetailInteractorOutputProtocol.swift in Sources */,
 				A37C63B82C55E4F0009A0C40 /* MovieListViewModel.swift in Sources */,
 				A304E96C2C586BB0005E2875 /* MovieDetailViewModel.swift in Sources */,
+				A304E99D2C58BB3F005E2875 /* MovieAlertProtocol.swift in Sources */,
 				A304E9932C589BD6005E2875 /* MovieDetailRouterProtocol.swift in Sources */,
 				A304E9632C5860FE005E2875 /* MovieViewModelMapperProtocol.swift in Sources */,
 				A37C63B12C558731009A0C40 /* MovieDetailTitle.swift in Sources */,
 				A37C63B62C55B99C009A0C40 /* MovieListViewController.swift in Sources */,
+				A304E99A2C58B1CB005E2875 /* MoviesAlertViewController.swift in Sources */,
 				A37C63BC2C5604F8009A0C40 /* MovieListInteractor.swift in Sources */,
 				A304E9572C570545005E2875 /* MovieListRouterProtocol.swift in Sources */,
 				A304E98B2C589B8F005E2875 /* MovieDetailInteractorInputProtocol.swift in Sources */,
