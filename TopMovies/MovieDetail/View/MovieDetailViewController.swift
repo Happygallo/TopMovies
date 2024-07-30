@@ -80,8 +80,8 @@ class MovieDetailViewController: UIViewController {
         let button = WatchedButton(type: .system)
         button.firstStateIcon = UIImage(named: "EmptyCircle")
         button.secondStateIcon = UIImage(named: "Checkmark")
-        button.firstTitle = "Watch"
-        button.secondTitle = "Unwatch"
+        button.firstTitle = NSLocalizedString("Watch", comment: "")
+        button.secondTitle = NSLocalizedString("Unwatch", comment: "")
         button.firstBackgroundColor = .color900
         button.secondBackgroundColor = .greenScore
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -221,7 +221,7 @@ extension MovieDetailViewController: MovieDetailPresenterOutputProtocol {
         
         movieTitle.year = model.date
         
-        movieDescription.header = "Description"
+        movieDescription.header = NSLocalizedString("Description", comment: "Movie description")
         movieDescription.content = model.description
         ratingScoreView.configureContent(rating: model.rating, backgroundColor: model.ratingColor, labelColor: model.ratingLabelColor)
     }

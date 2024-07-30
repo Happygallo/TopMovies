@@ -52,7 +52,7 @@ class MovieListViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        title = "Top Movies"
+        title = NSLocalizedString("App_title", comment: "")
         if let navigationController = navigationController {
             navigationController.navigationBar.prefersLargeTitles = true
             
