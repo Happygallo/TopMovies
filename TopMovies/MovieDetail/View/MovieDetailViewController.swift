@@ -79,7 +79,7 @@ class MovieDetailViewController: UIViewController {
     private lazy var confirmButton: WatchedButton = {
         let button = WatchedButton(type: .system)
         button.firstStateIcon = UIImage(named: "EmptyCircle")
-        button.secondStateIcon = UIImage(named: "Checkmark")
+        button.secondStateIcon = UIImage(named: "WhiteCheckmark")
         button.firstTitle = NSLocalizedString("Watch", comment: "")
         button.secondTitle = NSLocalizedString("Unwatch", comment: "")
         button.firstBackgroundColor = .color900
