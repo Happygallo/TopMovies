@@ -38,6 +38,8 @@
 		A304E99D2C58BB3F005E2875 /* MovieAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */; };
 		A304E9A12C58E069005E2875 /* WatchedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9A02C58E069005E2875 /* WatchedButton.swift */; };
 		A304E9A72C58E554005E2875 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A304E9A62C58E554005E2875 /* Localizable.xcstrings */; };
+		A304E9AA2C592F9F005E2875 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A304E9A92C592F9F005E2875 /* Config.plist */; };
+		A304E9AC2C592FEE005E2875 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9AB2C592FEE005E2875 /* Config.swift */; };
 		A37C63582C535122009A0C40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37C63572C535122009A0C40 /* AppDelegate.swift */; };
 		A37C63612C535123009A0C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37C63602C535123009A0C40 /* Assets.xcassets */; };
 		A37C63642C535123009A0C40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37C63622C535123009A0C40 /* LaunchScreen.storyboard */; };
@@ -108,6 +110,8 @@
 		A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAlertProtocol.swift; sourceTree = "<group>"; };
 		A304E9A02C58E069005E2875 /* WatchedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedButton.swift; sourceTree = "<group>"; };
 		A304E9A62C58E554005E2875 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A304E9A92C592F9F005E2875 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		A304E9AB2C592FEE005E2875 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A37C63542C535122009A0C40 /* TopMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37C63572C535122009A0C40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A37C63602C535123009A0C40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 			children = (
 				A304E9712C5881D2005E2875 /* ImageLoaderService.swift */,
 				A304E9992C58B1CB005E2875 /* MoviesAlertViewController.swift */,
+				A304E9AB2C592FEE005E2875 /* Config.swift */,
 				A304E9882C589218005E2875 /* Entities */,
 				A304E9732C5881DF005E2875 /* Protocols */,
 				A37C63AA2C555FD9009A0C40 /* Components */,
@@ -316,6 +321,7 @@
 				A37C63602C535123009A0C40 /* Assets.xcassets */,
 				A37C63622C535123009A0C40 /* LaunchScreen.storyboard */,
 				A37C63652C535123009A0C40 /* Info.plist */,
+				A304E9A92C592F9F005E2875 /* Config.plist */,
 				A304E9A62C58E554005E2875 /* Localizable.xcstrings */,
 			);
 			path = TopMovies;
@@ -526,6 +532,7 @@
 				A304E9802C58895B005E2875 /* SpaceMono-Italic.ttf in Resources */,
 				A304E9812C58895B005E2875 /* SpaceMono-Bold.ttf in Resources */,
 				A37C63642C535123009A0C40 /* LaunchScreen.storyboard in Resources */,
+				A304E9AA2C592F9F005E2875 /* Config.plist in Resources */,
 				A37C63612C535123009A0C40 /* Assets.xcassets in Resources */,
 				A304E9A72C58E554005E2875 /* Localizable.xcstrings in Resources */,
 				A304E9832C58895B005E2875 /* SpaceMono-Regular.ttf in Resources */,
@@ -558,6 +565,7 @@
 				A304E94C2C56FB88005E2875 /* MovieListApiDataManager.swift in Sources */,
 				A37C63C22C560750009A0C40 /* TopMoviesEntity.swift in Sources */,
 				A37C63882C5355B2009A0C40 /* MovieDetailViewController.swift in Sources */,
+				A304E9AC2C592FEE005E2875 /* Config.swift in Sources */,
 				A304E9752C5881ED005E2875 /* ImageLoaderServiceProtocol.swift in Sources */,
 				A304E9A12C58E069005E2875 /* WatchedButton.swift in Sources */,
 				A304E96F2C586FE2005E2875 /* MovieDetailInteractor.swift in Sources */,
