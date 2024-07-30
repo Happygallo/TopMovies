@@ -8,7 +8,7 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
-
+    
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.backgroundColor = .clear
@@ -58,8 +58,6 @@ class MovieDetailViewController: UIViewController {
         return button
     }()
     
-    private lazy var ratingScoreView = RatingScoreView()
-    
     private lazy var posterAndTitleStack: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
@@ -78,12 +76,24 @@ class MovieDetailViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var movieTitle: MovieDetailTitle = MovieDetailTitle()
+    private lazy var confirmButton: WatchedButton = {
+        let button = WatchedButton(type: .system)
+        button.firstStateIcon = UIImage(named: "EmptyCircle")
+        button.secondStateIcon = UIImage(named: "Checkmark")
+        button.firstTitle = "Watch"
+        button.secondTitle = "Unwatch"
+        button.firstBackgroundColor = .color900
+        button.secondBackgroundColor = .greenScore
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
+    private lazy var ratingScoreView = RatingScoreView()
+    private lazy var movieTitle: MovieDetailTitle = MovieDetailTitle()
     private lazy var movieDescription = MovieDescriptionView()
     
     var presenterInput: MovieDetailPresenterInputProtocol?
-    var backgroundImageHeightConstraint: NSLayoutConstraint!
+    var backgroundImageHeightConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +116,7 @@ class MovieDetailViewController: UIViewController {
         backgroundImageView.addSubview(overlayView)
         contentView.addSubview(posterAndTitleStack)
         contentView.addSubview(movieDescription)
+        contentView.addSubview(confirmButton)
         
         posterAndTitleStack.addArrangedSubview(posterImageView)
         posterAndTitleStack.addArrangedSubview(movieTitle)
@@ -133,10 +144,10 @@ class MovieDetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -40)
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -48),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -48)
         ])
         
         backgroundImageHeightConstraint = backgroundImageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight)
@@ -145,7 +156,7 @@ class MovieDetailViewController: UIViewController {
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImageHeightConstraint
+            backgroundImageHeightConstraint ?? backgroundImageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight)
         ])
         
         NSLayoutConstraint.activate([
@@ -158,9 +169,9 @@ class MovieDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             posterAndTitleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             posterAndTitleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            posterAndTitleStack.topAnchor.constraint(equalTo: roundedBackgroundView.topAnchor, constant: -32)
+            posterAndTitleStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 200)
         ])
-
+        
         NSLayoutConstraint.activate([
             posterImageView.widthAnchor.constraint(equalToConstant: 100),
             posterImageView.heightAnchor.constraint(equalToConstant: 150)
@@ -173,11 +184,23 @@ class MovieDetailViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            confirmButton.topAnchor.constraint(equalTo: movieDescription.bottomAnchor, constant: 32),
+            confirmButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            confirmButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            confirmButton.heightAnchor.constraint(equalToConstant: 40),
+            confirmButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
             overlayView.topAnchor.constraint(equalTo: backgroundImageView.topAnchor),
             overlayView.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor),
             overlayView.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor),
             overlayView.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor)
         ])
+    }
+    
+    @objc private func confirmButtonTapped() {
+        confirmButton.setImage(UIImage(), for: .normal)
     }
     
     @objc func close() {
@@ -191,7 +214,7 @@ extension MovieDetailViewController: MovieDetailPresenterOutputProtocol {
         if !urlsToLoad.isEmpty {
             presenterInput?.loadImages(urls: urlsToLoad)
         }
-        closeButton.setImage(UIImage(named: "lightOnDark")!, for: UIControl.State.normal)
+        closeButton.setImage(UIImage(named: "closeIcon") ?? UIImage(), for: UIControl.State.normal)
         backgroundImageView.image = model.coverImage?.applyMonochromeFilter(color: .color500, intensity: 1.0)
         posterImageView.image = model.posterImage
         movieTitle.title = model.title
@@ -218,10 +241,15 @@ extension MovieDetailViewController: MovieDetailPresenterOutputProtocol {
 extension MovieDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        backgroundImageHeightConstraint.constant = max(Constants.imageHeight - offsetY, .zero)
+        let newHeight = max(Constants.imageHeight - offsetY, Constants.minimumImageHeight)
+        
+        if newHeight != backgroundImageHeightConstraint?.constant {
+            backgroundImageHeightConstraint?.constant = newHeight
+        }
     }
 }
 
 private struct Constants {
     static let imageHeight: CGFloat = 250
+    static let minimumImageHeight: CGFloat = 0
 }

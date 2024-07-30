@@ -35,7 +35,7 @@ class MovieListViewController: UIViewController {
         presenterInput?.fetchMovies()
         buildViewHierarchy()
         setupConstraints()
-        configureContent()
+        configureNavigationBar()
     }
     
     private func buildViewHierarchy() {
@@ -51,7 +51,21 @@ class MovieListViewController: UIViewController {
         ])
     }
     
-    private func configureContent() {}
+    private func configureNavigationBar() {
+        title = "Top Movies"
+        if let navigationController = navigationController {
+            navigationController.navigationBar.prefersLargeTitles = true
+            
+            navigationController.navigationBar.largeTitleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.color900,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: .bold)
+            ]
+            
+            navigationController.navigationBar.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.color900
+            ]
+        }
+    }
 }
 
 extension MovieListViewController: MovieListPresenterOutputProtocol {
@@ -78,9 +92,9 @@ extension MovieListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCellView", for: indexPath) as! MovieCellView
-        guard let model = presenterInput?.movie(at: indexPath.row) else {
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCellView", for: indexPath) as? MovieCellView,
+              let model = presenterInput?.movie(at: indexPath.row) else {
+            return UITableViewCell()
         }
         
         if model.coverImage == nil {

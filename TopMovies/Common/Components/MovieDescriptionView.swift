@@ -13,7 +13,7 @@ class MovieDescriptionView: UIView {
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = .color800
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 17, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -23,7 +23,7 @@ class MovieDescriptionView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.textColor = .color600
-        label.font = .spaceMonoFont(type: .regular, size: 14)
+        label.font = .spaceMonoFont(type: .regular, size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

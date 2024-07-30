@@ -16,9 +16,9 @@ class MovieCellView: UITableViewCell {
         card.layer.cornerRadius = 8
         card.layer.masksToBounds = false
         card.layer.shadowColor = UIColor.color900.cgColor
-        card.layer.shadowOpacity = 0.5
-        card.layer.shadowOffset = CGSize(width: 0, height: 2)
-        card.layer.shadowRadius = 4
+        card.layer.shadowOpacity = 0.2
+        card.layer.shadowOffset = CGSize(width: 0, height: 1)
+        card.layer.shadowRadius = 8
         return card
     }()
 
@@ -56,10 +56,11 @@ class MovieCellView: UITableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 21, weight: .bold)
+        label.textColor = .color900
         return label
     }()
 
-    let yearLabel: UILabel = {
+    let dateLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .color600
@@ -87,15 +88,15 @@ class MovieCellView: UITableViewCell {
         horizontalStack.addArrangedSubview(verticalStack)
         horizontalStack.addArrangedSubview(movieRating)
         verticalStack.addArrangedSubview(movieTitle)
-        verticalStack.addArrangedSubview(yearLabel)
+        verticalStack.addArrangedSubview(dateLabel)
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
 
             movieImageView.topAnchor.constraint(equalTo: cardView.topAnchor),
             movieImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
@@ -113,7 +114,7 @@ class MovieCellView: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .color100
         
-        yearLabel.text = model.year
+        dateLabel.text = model.year
         movieTitle.text = model.title
         movieImageView.image = model.coverImage
         movieRating.configureContent(rating: model.rating, backgroundColor: model.ratingColor, labelColor: model.ratingLabelColor)
@@ -125,8 +126,9 @@ class MovieCellView: UITableViewCell {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        animate(isHighlighted: false, completion: nil)
+        animate(isHighlighted: false){ _ in
+            super.touchesEnded(touches, with: event)
+        }
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -139,8 +141,13 @@ class MovieCellView: UITableViewCell {
         let duration: TimeInterval = isHighlighted ? 0.2 : 0.4
         let transform: CGAffineTransform = isHighlighted ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
 
-        UIView.animate(withDuration: duration, delay: 0, options: animationOptions, animations: {
-            self.transform = transform
-        }, completion: completion)
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            options: animationOptions,
+            animations: {
+                self.transform = transform
+            },
+            completion: completion)
     }
 }

@@ -36,6 +36,7 @@
 		A304E9982C58AD77005E2875 /* UIImage+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9972C58AD77005E2875 /* UIImage+Filters.swift */; };
 		A304E99A2C58B1CB005E2875 /* MoviesAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9992C58B1CB005E2875 /* MoviesAlertViewController.swift */; };
 		A304E99D2C58BB3F005E2875 /* MovieAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */; };
+		A304E9A12C58E069005E2875 /* WatchedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A304E9A02C58E069005E2875 /* WatchedButton.swift */; };
 		A37C63582C535122009A0C40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37C63572C535122009A0C40 /* AppDelegate.swift */; };
 		A37C63612C535123009A0C40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37C63602C535123009A0C40 /* Assets.xcassets */; };
 		A37C63642C535123009A0C40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37C63622C535123009A0C40 /* LaunchScreen.storyboard */; };
@@ -104,6 +105,7 @@
 		A304E9972C58AD77005E2875 /* UIImage+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Filters.swift"; sourceTree = "<group>"; };
 		A304E9992C58B1CB005E2875 /* MoviesAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAlertViewController.swift; sourceTree = "<group>"; };
 		A304E99C2C58BB3F005E2875 /* MovieAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAlertProtocol.swift; sourceTree = "<group>"; };
+		A304E9A02C58E069005E2875 /* WatchedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedButton.swift; sourceTree = "<group>"; };
 		A37C63542C535122009A0C40 /* TopMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37C63572C535122009A0C40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A37C63602C535123009A0C40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,14 +171,6 @@
 				A304E9602C586035005E2875 /* MovieViewModelMapper.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		A304E95E2C5717E9005E2875 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A37C63C32C560C0D009A0C40 /* MovieCellView.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		A304E95F2C571812005E2875 /* Protocols */ = {
@@ -344,10 +338,10 @@
 		A37C63892C5355B9009A0C40 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
-				A304E9942C589BE3005E2875 /* Router */,
-				A304E9892C589B82005E2875 /* Protocols */,
 				A304E9642C5866DC005E2875 /* View */,
 				A304E96D2C586FD0005E2875 /* Interactor */,
+				A304E9892C589B82005E2875 /* Protocols */,
+				A304E9942C589BE3005E2875 /* Router */,
 				A304E9652C5866EF005E2875 /* Presenter */,
 			);
 			path = MovieDetail;
@@ -359,6 +353,8 @@
 				A37C63AB2C555FF2009A0C40 /* RatingScoreView.swift */,
 				A37C63B02C558731009A0C40 /* MovieDetailTitle.swift */,
 				A37C63B22C55B1CB009A0C40 /* MovieDescriptionView.swift */,
+				A37C63C32C560C0D009A0C40 /* MovieCellView.swift */,
+				A304E9A02C58E069005E2875 /* WatchedButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -390,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				A37C63B52C55B99C009A0C40 /* MovieListViewController.swift */,
-				A304E95E2C5717E9005E2875 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -560,6 +555,7 @@
 				A37C63C22C560750009A0C40 /* TopMoviesEntity.swift in Sources */,
 				A37C63882C5355B2009A0C40 /* MovieDetailViewController.swift in Sources */,
 				A304E9752C5881ED005E2875 /* ImageLoaderServiceProtocol.swift in Sources */,
+				A304E9A12C58E069005E2875 /* WatchedButton.swift in Sources */,
 				A304E96F2C586FE2005E2875 /* MovieDetailInteractor.swift in Sources */,
 				A304E9532C570498005E2875 /* MovieListInteractorInputProtocol.swift in Sources */,
 				A304E9692C586B2E005E2875 /* MovieDetailViewModelMapper.swift in Sources */,
