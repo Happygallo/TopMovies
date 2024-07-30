@@ -23,12 +23,13 @@ class MovieListApiDataManager: MovieListApiDataManagerProtocol {
     
     init(
         baseURL: String = "https://api.themoviedb.org/3",
-        apiKey: String = "64e2974cebd0e95977481bc085c4ef1d",
         urlSession: URLSession = .shared
     ) {
         self.baseURL = baseURL
-        self.apiKey = apiKey
+        self.apiKey = ProcessInfo.processInfo.environment["MOVIE_DB_API_KEY"] ?? ""
         self.urlSession = urlSession
+        
+        assert(!self.apiKey.isEmpty, "API Key must be set in the environment variable MOVIE_DB_API_KEY")
     }
     
     func fetchTopMovies(page: Int, completion: @escaping (Result<TopMoviesEntity, Error>) -> Void) {
